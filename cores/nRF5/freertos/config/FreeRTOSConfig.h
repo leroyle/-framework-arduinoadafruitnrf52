@@ -91,6 +91,7 @@
 #define configUSE_TIMERS                                         1
 #define configTIMER_TASK_PRIORITY                                ( 2 ) // Normal
 #define configTIMER_QUEUE_LENGTH                                 32
+// LAL Note might need to bump up to 356
 #define configTIMER_TASK_STACK_DEPTH                             ( 256 )
 
 /* Tickless Idle configuration. */

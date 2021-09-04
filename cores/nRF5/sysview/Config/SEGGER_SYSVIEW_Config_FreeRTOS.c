@@ -86,7 +86,25 @@ extern const SEGGER_SYSVIEW_OS_API SYSVIEW_X_OS_TraceAPI;
 */
 static void _cbSendSystemDesc(void) {
   SEGGER_SYSVIEW_SendSysDesc("N="SYSVIEW_APP_NAME",D="SYSVIEW_DEVICE_NAME",O=FreeRTOS");
-  SEGGER_SYSVIEW_SendSysDesc("I#15=SysTick");
+//LAL added for WisBlock support
+//  SEGGER_SYSVIEW_SendSysDesc("I#15=SysTick");
+  SEGGER_SYSVIEW_SendSysDesc("I#15=SysTick, I#22=GPIOTE-Radio,I#33=RTC1,I#55=USBD");
+
+#define APP_EVTID_MAIN_LOOP           200
+#define APP_EVTID_PeriodElapsedCallback   201
+
+#define APP_EVTID_LORA_TASK_MARKER_1 203
+#define APP_EVTID_LORA_TASK_MARKER_2 204
+  SEGGER_SYSVIEW_NameMarker(APP_EVTID_MAIN_LOOP,
+                              "Main Loop Mark");
+  SEGGER_SYSVIEW_NameMarker(APP_EVTID_PeriodElapsedCallback,
+                              "Period Elapsed Mark");
+
+  SEGGER_SYSVIEW_NameMarker(APP_EVTID_LORA_TASK_MARKER_1,
+                              "MyLoRa Mark 1");
+  SEGGER_SYSVIEW_NameMarker(APP_EVTID_LORA_TASK_MARKER_2,
+                              "MyLoRa Mark 2");
+// LAL End
 }
 
 /*********************************************************************
